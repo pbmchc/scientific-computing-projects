@@ -16,11 +16,11 @@ def arithmetic_arranger(problems, evaluate_problems=False):
     arranged_parts_count = len(arranged_problems_list[0])
 
     arranged_problems = ''
-    for index in range(arranged_parts_count):
-        arrangement_columns = [p[index] for p in arranged_problems_list]
+    for part_index in range(arranged_parts_count):
+        arrangement_columns = [p[part_index] for p in arranged_problems_list]
         arranged_problems += ARRANGEMENT_PROBLEM_SEPARATOR.join(arrangement_columns)
 
-        if index != arranged_parts_count - 1:
+        if part_index != arranged_parts_count - 1:
             arranged_problems += '\n'
 
     return arranged_problems
