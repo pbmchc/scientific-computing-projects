@@ -1,3 +1,4 @@
+from functools import reduce
 from constants import CATEGORY_OUTPUT_LINE_LENGTH
 from number_utils import format_decimal_places
 from string_utils import limit_string_length
@@ -12,3 +13,6 @@ def get_category_ledger_row(record):
 
     return description + amount.rjust(CATEGORY_OUTPUT_LINE_LENGTH - len(description), ' ')
 
+
+def get_category_operations_total(records):
+    return reduce(lambda acc, curr: acc + curr['amount'], records, 0)

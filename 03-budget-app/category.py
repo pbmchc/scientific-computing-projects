@@ -1,6 +1,5 @@
-from functools import reduce
-from category_record_mapper import get_category_ledger_row
 from constants import CATEGORY_OUTPUT_LINE_LENGTH
+from category_utils import get_category_ledger_row, get_category_operations_total
 from number_utils import format_decimal_places
 from string_utils import limit_string_length
 
@@ -21,9 +20,6 @@ class Category:
 
         return can_withdraw
 
-    def get_balance(self):
-        return reduce(lambda acc, curr: acc + curr['amount'], self.ledger, 0)
-
     def transfer(self, amount, category):
         can_transfer = self.check_funds(amount)
 
@@ -32,6 +28,12 @@ class Category:
             category.deposit(amount, 'Transfer from ' + self.name)
 
         return can_transfer
+
+    def get_balance(self):
+        return get_category_operations_total(self.ledger)
+
+    def get_withdrawals_total(self):
+        return abs(get_category_operations_total(filter(lambda operation: operation['amount'] < 0, self.ledger)))
 
     def check_funds(self, amount):
         return self.get_balance() >= amount
