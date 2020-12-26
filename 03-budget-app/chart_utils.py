@@ -36,11 +36,11 @@ def get_chart_labels(chart_records):
     return [_get_chart_labels_section(character, chart_records, x_axis_length) for character in range(max_label_length)]
 
 
-def _get_percentage_share(record, withdrawals_total):
-    name, category_total = record
-    category_withdrawals_percentage_share = count_percentage_share(category_total, withdrawals_total)
+def _get_percentage_share(chart_record, withdrawals_total):
+    label, value = chart_record
+    category_withdrawals_percentage_share = count_percentage_share(value, withdrawals_total)
 
-    return name, round(category_withdrawals_percentage_share)
+    return label, round(category_withdrawals_percentage_share)
 
 
 def _get_chart_area_section(tick, chart_records, x_axis_length):
