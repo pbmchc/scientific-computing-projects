@@ -44,3 +44,31 @@ class Rectangle:
 
     def _get_shape_info(self):
         return type(self).__name__ + '(width=' + str(self.width) + ', height=' + str(self.height) + ')'
+
+
+class Square(Rectangle):
+    def __init__(self, side_length):
+        super().__init__(side_length, side_length)
+
+    def set_width(self, width):
+        self._set_shape_dimensions(width)
+
+    def set_height(self, height):
+        self._set_shape_dimensions(height)
+
+    def set_side(self, side_length):
+        self._set_shape_dimensions(side_length)
+
+    def __str__(self):
+        return self._get_shape_info()
+
+    def __repr__(self):
+        return self._get_shape_info()
+
+    def _set_shape_dimensions(self, side_length):
+        self.width = side_length
+        self.height = side_length
+
+    def _get_shape_info(self):
+        return type(self).__name__ + '(side=' + str(self.width) + ')'
+
