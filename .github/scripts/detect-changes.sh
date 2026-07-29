@@ -10,18 +10,17 @@ subprojects='[
 ]'
 
 if [ "${GITHUB_EVENT_NAME:-}" = "workflow_dispatch" ]; then
-  paths=$(jq -r '.[].path' <<<"$subprojects")
+  projects=$(jq -c '.' <<<"$subprojects")
 else
   paths=$(git diff --name-only "${GITHUB_EVENT_BEFORE:-}" "${GITHUB_SHA:-}" 2>/dev/null || true)
+  projects='[]'
+
+  while read -r entry; do
+    path=$(jq -r '.path' <<<"$entry")
+    if printf '%s\n' "$paths" | grep -qE "^${path}/"; then
+      projects=$(jq -c --argjson entry "$entry" '. + [$entry]' <<<"$projects")
+    fi
+  done < <(jq -c '.[]' <<<"$subprojects")
 fi
-
-projects='[]'
-
-while read -r entry; do
-  path=$(jq -r '.path' <<<"$entry")
-  if printf '%s\n' "$paths" | grep -qE "^${path}/"; then
-    projects=$(jq -c --argjson entry "$entry" '. + [$entry]' <<<"$projects")
-  fi
-done < <(jq -c '.[]' <<<"$subprojects")
 
 echo "projects=$projects" >> "$GITHUB_OUTPUT"
