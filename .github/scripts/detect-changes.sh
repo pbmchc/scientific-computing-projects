@@ -13,7 +13,7 @@ if [ "${GITHUB_EVENT_NAME:-}" = "workflow_dispatch" ]; then
   paths='*'
 else
   paths=$(git diff --name-only "${GITHUB_EVENT_BEFORE:-}" "${GITHUB_SHA:-}" 2>/dev/null || true)
-  if printf '%s\n' "$paths" | grep -qE '^(\.github/scripts/|\.github/workflows/)'; then
+  if printf '%s\n' "$paths" | grep -qE '^\.github/(scripts|workflows)/'; then
     paths='*'
   fi
 fi
