@@ -1,5 +1,6 @@
 import copy
 import random
+
 from arguments_utils import convert_to_arguments_list
 from list_utils import is_part_of_list
 
@@ -10,7 +11,7 @@ class Hat:
 
     def draw(self, number_of_balls):
         max_number_of_balls = len(self.contents)
-        sample_length = number_of_balls if number_of_balls <= max_number_of_balls else max_number_of_balls
+        sample_length = min(number_of_balls, max_number_of_balls)
         draw_result = random.sample(self.contents, sample_length)
 
         for ball in draw_result:

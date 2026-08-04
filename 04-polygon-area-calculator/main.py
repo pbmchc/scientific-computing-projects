@@ -1,7 +1,7 @@
 # This entrypoint file to be used in development. Start by reading README.md
-import shape_calculator
 from unittest import main
 
+import shape_calculator
 
 rect = shape_calculator.Rectangle(5, 10)
 print(rect.get_area())

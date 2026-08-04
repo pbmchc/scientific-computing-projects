@@ -1,5 +1,5 @@
-from constants import CATEGORY_OUTPUT_LINE_LENGTH
 from category_utils import get_category_ledger_row, get_category_operations_total
+from constants import CATEGORY_OUTPUT_LINE_LENGTH
 from number_utils import format_decimal_places
 from string_utils import limit_string_length
 

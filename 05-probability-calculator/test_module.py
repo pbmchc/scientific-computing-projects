@@ -1,4 +1,5 @@
 import unittest
+
 import prob_calculator
 
 prob_calculator.random.seed(95)

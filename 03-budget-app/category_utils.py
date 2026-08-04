@@ -1,4 +1,5 @@
 from functools import reduce
+
 from constants import CATEGORY_OUTPUT_LINE_LENGTH
 from number_utils import format_decimal_places
 from string_utils import limit_string_length

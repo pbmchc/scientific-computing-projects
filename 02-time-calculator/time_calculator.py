@@ -1,5 +1,5 @@
-from constants import AM, CLOCK_HOURS, DAYS_OF_WEEK, ONE_HOUR_IN_MINUTES, PM
 import time_utils
+from constants import AM, CLOCK_HOURS, DAYS_OF_WEEK, ONE_HOUR_IN_MINUTES, PM
 
 NEXT_DAY_SUFFIX = 'next day'
 DAYS_LATER_SUFFIX = 'days later'

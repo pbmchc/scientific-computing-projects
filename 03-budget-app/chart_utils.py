@@ -9,7 +9,7 @@ CHART_Y_AXIS_TICK_LABEL_SEPARATOR = '|'
 
 
 def get_chart_data_records(categories):
-    categories_withdrawals = list(map(lambda c: (c.name, c.get_withdrawals_total()), categories))
+    categories_withdrawals = [(c.name, c.get_withdrawals_total()) for c in categories]
     withdrawals_total = sum(total for _, total in categories_withdrawals)
     withdrawals_percentage_shares = [_get_percentage_share(r, withdrawals_total) for r in categories_withdrawals]
 

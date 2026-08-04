@@ -1,5 +1,12 @@
 from category import Category
-from chart_utils import get_chart_data_records, get_chart_area, get_chart_x_axis, get_chart_labels
+from chart_utils import (
+    get_chart_area,
+    get_chart_data_records,
+    get_chart_labels,
+    get_chart_x_axis,
+)
+
+__all__ = ['Category', 'create_spend_chart']
 
 CHART_TITLE = 'Percentage spent by category'
 

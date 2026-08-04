@@ -1,5 +1,5 @@
-from constants import ADDITION_OPERATOR
 from arithmetic_problem_validator import validate_arithmetic_problems
+from constants import ADDITION_OPERATOR
 
 ARRANGEMENT_OPERATOR_PART_LENGTH = 2
 ARRANGEMENT_PROBLEM_SEPARATOR = '    '

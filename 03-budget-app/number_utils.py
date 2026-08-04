@@ -3,4 +3,4 @@ def count_percentage_share(numerator, denominator):
 
 
 def format_decimal_places(amount):
-    return '{:.2f}'.format(amount)
+    return f'{amount:.2f}'
